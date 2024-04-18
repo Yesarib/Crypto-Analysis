@@ -1,9 +1,15 @@
 from binance.client import Client
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
 
 def get_binance_api():
-    client = Client("WccNGRSktaAdG3oY8TodFr1UvbnthoMsTeKMaCjjsjLN3Fmeat1gvT4DuxwcVtqA",
-                    "4Nf0g5NtZ8jTGP5YOXvATiUrmjUIVBTXEJhj5YHIPPoHBWr0cjOwnEGcXbThVFIS")
+    binance_api_key = os.getenv("BINANCE_API_KEY")
+    binance_api_secret = os.getenv("BINANCE_API_SECRET")
+    client = Client(binance_api_key,binance_api_secret)
 
     symbol = 'BTCUSDT'
     interval = Client.KLINE_INTERVAL_1DAY  # Günlük fiyat verileri için
